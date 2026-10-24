@@ -1,11 +1,15 @@
 
 import { Navbar, Nav, Container } from "react-bootstrap";
 
-const BarraNavegacion = () => {
+type BarraNavegacionProps = {
+  nombre: string;
+};
+
+const BarraNavegacion = ({ nombre }: BarraNavegacionProps) => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#inicio">Pilar Tecno</Navbar.Brand>
+        <Navbar.Brand href="#inicio">{nombre}</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="ms-auto">

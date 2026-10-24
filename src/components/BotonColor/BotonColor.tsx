@@ -2,14 +2,27 @@
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
-const BotonColor = () => {
+type BotonColorProps = {
+  textoBoton: string;
+  onColorChange: (color: string) => void;
+};
+
+const BotonColor = ({
+  textoBoton,
+  onColorChange,
+}: BotonColorProps) => {
   const [colorTitulo, setColorTitulo] = useState("#1B2A4A");
   const [mostrarModal, setMostrarModal] = useState(false);
+
+  const aceptarColor = () => {
+    onColorChange(colorTitulo);
+    setMostrarModal(false);
+  };
 
   return (
     <>
       <Button onClick={() => setMostrarModal(true)}>
-        Personalizar
+        {textoBoton}
       </Button>
 
       <Modal
@@ -36,10 +49,7 @@ const BotonColor = () => {
             Cancelar
           </Button>
 
-          <Button
-            variant="primary"
-            onClick={() => setMostrarModal(false)}
-          >
+          <Button variant="primary" onClick={aceptarColor}>
             Aceptar
           </Button>
         </Modal.Footer>
